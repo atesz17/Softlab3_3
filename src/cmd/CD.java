@@ -12,21 +12,28 @@ public class CD implements Command {
 		File cr = wd;
 		try
 		{
-			if (cmd.length > 2 || cmd.length==1)
+			if (cmd.length==1)
+			{
 				throw new IOException();
+			}
+			else if (cmd[1].equals(".."))
+			{
+				wd = wd.getParentFile();
+			}
 			else
 			{
-				if (cmd[1].equals(".."))
+				String fileWithSpcaes = new String();
+				for (int i = 1; i<cmd.length; i++)
 				{
-					wd = wd.getParentFile();
+					fileWithSpcaes += new String((cmd[i] + " "));
 				}
-				else
-				{
-					wd = new File(wd, cmd[1]);
-					if(!wd.exists() || !wd.isDirectory())
-						throw new FileNotFoundException();
-				}
+				fileWithSpcaes = fileWithSpcaes.substring(0, fileWithSpcaes.length() - 1);
+				
+				wd = new File(wd, cmd[1]);
+				if(!wd.exists() || !wd.isDirectory())
+					throw new FileNotFoundException();
 			}
+			
 		}
 		catch(FileNotFoundException e)
 		{

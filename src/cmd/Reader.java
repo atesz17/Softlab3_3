@@ -47,7 +47,10 @@ public class Reader {
 			ls.execute(wd, cmd);
 		}
 		else if(cmd[0].equals("mv"))
-			mv(cmd);
+		{
+			MV mv = new MV();
+			mv.execute(wd, cmd);
+		}
 		else if(cmd[0].equals("cat"))
 			cat(cmd);
 		else if(cmd[0].equals("wc"))
