@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import cmd.*;
-
 public class Reader {
 
 	private String line;
@@ -44,7 +42,10 @@ public class Reader {
 			wd = cd.execute(wd, cmd);
 		}
 		else if(cmd[0].equals("ls"))
-			ls(cmd);
+		{
+			LS ls = new LS();
+			ls.execute(wd, cmd);
+		}
 		else if(cmd[0].equals("mv"))
 			mv(cmd);
 		else if(cmd[0].equals("cat"))
