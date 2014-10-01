@@ -57,19 +57,11 @@ public class Reader {
 			cat.execute(wd, cmd);
 		}
 		else if(cmd[0].equals("wc"))
-			wc(cmd);
+		{
+			WC wc = new WC();
+			wc.execute(wd, cmd);
+		}
 		else
 			System.out.println("Invalid input, try again!");
-	}
-	
-	
-	protected void cat(String[] cmd)
-	{
-		
-	}
-	
-	protected void wc(String[] cmd)
-	{
-		
 	}
 }
