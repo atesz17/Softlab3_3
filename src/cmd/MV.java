@@ -23,6 +23,7 @@ public class MV implements Command {
 				boolean success = f1.renameTo(f2);
 				if (!success)
 					throw new RuntimeException();
+				System.out.println("Operation rename was successful!");
 			}
 			else
 			{
