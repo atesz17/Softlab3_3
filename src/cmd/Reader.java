@@ -1,12 +1,16 @@
 package cmd;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import cmd.*;
 
 public class Reader {
 
 	private String line;
+	public static File wd = new File(System.getProperty("user.dir"));
 	
 	public void processInput() throws IOException // br.readLine-hoz kell
 	{
@@ -25,11 +29,20 @@ public class Reader {
 	private void switchCommand(String[] cmd)
 	{
 		if (cmd[0].equals("exit"))
-			exit(cmd);
+		{
+			Exit e = new Exit();
+			e.execute(wd, cmd);
+		}
 		else if(cmd[0].equals("pwd"))
-			pwd(cmd);
+		{
+			PWD pwd = new PWD();
+			pwd.execute(wd, cmd);
+		}
 		else if(cmd[0].equals("cd"))
-			cd(cmd);
+		{
+			CD cd = new CD();
+			wd = cd.execute(wd, cmd);
+		}
 		else if(cmd[0].equals("ls"))
 			ls(cmd);
 		else if(cmd[0].equals("mv"))
@@ -38,22 +51,11 @@ public class Reader {
 			cat(cmd);
 		else if(cmd[0].equals("wc"))
 			wc(cmd);
+		else
+			System.out.println("Invalid input, try again!");
 	}
 	
-	protected void exit(String[] cmd)
-	{
-		System.exit(0);
-	}
 	
-	protected void pwd(String[] cmd)
-	{
-		
-	}
-	
-	protected void cd(String[] cmd)
-	{
-		
-	}
 	
 	protected void ls(String[] cmd)
 	{

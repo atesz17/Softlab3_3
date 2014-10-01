@@ -7,6 +7,10 @@ public class Main {
 	public static void main(String[] args) throws IOException
 	{
 		Reader r = new Reader();
-		r.processInput();
+		System.out.println("Ready for reading input...");
+		while(true)
+		{
+			r.processInput();
+		}
 	}
 }
